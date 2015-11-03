@@ -46,5 +46,7 @@ RUN echo [mail function] >> /usr/local/etc/php/php.ini && \
 WORKDIR /var/www/html
 
 # https://docs.docker.com/compose/wordpress/ v4.3.1
-RUN curl https://wordpress.org/latest.tar.gz | tar -xvzf - \
-	&& chown -R www-data:www-data sites
+RUN curl -fSL "https://wordpress.org/latest.tar.gz" -o wordpress.tar.gz \
+	&& tar -xz --strip-components=1 -f wordpress.tar.gz \
+	&& rm wordpress.tar.gz \
+	&& chown -R www-data:www-data wp-content
