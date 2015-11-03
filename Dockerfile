@@ -50,3 +50,14 @@ RUN curl -fSL "https://wordpress.org/latest.tar.gz" -o wordpress.tar.gz \
 	&& tar -xz --strip-components=1 -f wordpress.tar.gz \
 	&& rm wordpress.tar.gz \
 	&& chown -R www-data:www-data wp-content
+
+# install wp-cli
+RUN curl -fLSO "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar" \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+
+# install wp tab completion
+RUN curl -fLSO "https://github.com/wp-cli/wp-cli/raw/master/utils/wp-completion.bash" \
+    && source /var/www/html/wp-completion.bash
+
+RUN source ~/.bash_profile
