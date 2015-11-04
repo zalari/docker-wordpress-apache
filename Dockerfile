@@ -49,4 +49,4 @@ WORKDIR /var/www/html
 RUN curl -fSL "https://wordpress.org/latest.tar.gz" -o wordpress.tar.gz \
 	&& tar -xz --strip-components=1 -f wordpress.tar.gz \
 	&& rm wordpress.tar.gz \
-	&& chown -R www-data:www-data wp-content
+	&& chown -R www-data:www-data *
