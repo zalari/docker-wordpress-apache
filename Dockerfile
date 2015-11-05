@@ -50,3 +50,5 @@ RUN curl -fSL "https://wordpress.org/latest.tar.gz" -o wordpress.tar.gz \
 	&& tar -xz --strip-components=1 -f wordpress.tar.gz \
 	&& rm wordpress.tar.gz \
 	&& chown -R www-data:www-data *
+
+RUN usermod -u 1000 www-data
