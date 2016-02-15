@@ -14,7 +14,11 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev ssmtp \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mbstring pdo pdo_mysql pdo_pgsql
+	&& docker-php-ext-install gd mbstring pdo pdo_mysql pdo_pgsql mysqli
+
+#execute apache2-foreground as the PHP image does
+#(we only needed to install the MySQL extension after all)
+CMD ["apache2-foreground"]
 
 #setup php.ini to allow for sending via ssmtp
 RUN echo "[mail function]" >> /usr/local/etc/php/php.ini && \
