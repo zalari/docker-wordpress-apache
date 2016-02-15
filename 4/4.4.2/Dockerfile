@@ -31,8 +31,8 @@ ENV WP_MD5 8ac443eb8769f7dc2df7aec87acb44ce
 RUN curl -fSL "https://de.wordpress.org/wordpress-${WP_VERSION}-${WP_LOCALE}.tar.gz" -o wp.tar.gz \
 	&& echo "${WP_MD5} *wp.tar.gz" | md5sum -c - \
 	&& tar -xz --strip-components=1 -f wp.tar.gz \
-	&& rm wp.tar.gz \
-	&& chown -R www-data:www-data sites
+	&& rm wp.tar.gz
+	&& chown -R www-data:www-data .
 
 #setup ssmtp ENVs defaults
 ENV SMTP_MAILHOST localhost
@@ -51,5 +51,5 @@ ENV CHANGE_USER_ID No
 ENV WWW_DATA_USER_ID 1000
 
 #configure ssmtp by creating a new conf on run, generated from ENVs
-COPY setup_ssmtp_run_apache /usr/local/bin/
-CMD ["setup_ssmtp_run_apache"]
+COPY setup_ssmtp_run_apache.sh /usr/local/bin/
+CMD ["setup_ssmtp_run_apache.sh"]
