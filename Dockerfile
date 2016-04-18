@@ -30,7 +30,7 @@ WORKDIR /var/www/html
 # https://de.wordpress.org/releases/
 ENV WP_VERSION 4.5
 ENV WP_LOCALE de_DE
-ENV WP_MD5 8ac443eb8769f7dc2df7aec87acb44ce
+ENV WP_MD5 059003973dd34251a21f91603544b789
 
 RUN curl -fSL "https://de.wordpress.org/wordpress-${WP_VERSION}-${WP_LOCALE}.tar.gz" -o wp.tar.gz \
 	&& echo "${WP_MD5} *wp.tar.gz" | md5sum -c - \
