@@ -2,7 +2,7 @@
 FROM php:5.6-apache
 
 MAINTAINER  David Enke <david.enke@zalari.de>
-ENV REFRESHED_AT 2016-04-18
+ENV REFRESHED_AT 2016-02-15
 ENV CONTAINER_VERSION 0.1.1
 
 RUN a2enmod rewrite
