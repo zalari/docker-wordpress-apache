@@ -3,7 +3,7 @@ FROM php:5.6-apache
 
 MAINTAINER  David Enke <david.enke@zalari.de>
 ENV REFRESHED_AT 2016-02-15
-ENV CONTAINER_VERSION 0.1.1
+ENV CONTAINER_VERSION 0.1.2
 
 RUN a2enmod rewrite
 
@@ -30,7 +30,7 @@ WORKDIR /var/www/html
 # https://de.wordpress.org/releases/
 ENV WP_VERSION 4.5
 ENV WP_LOCALE de_DE
-ENV WP_MD5 059003973dd34251a21f91603544b789
+ENV WP_MD5 e0c28f7a0fcfb340af0eefe008b591cd
 
 RUN curl -fSL "https://de.wordpress.org/wordpress-${WP_VERSION}-${WP_LOCALE}.tar.gz" -o wp.tar.gz \
 	&& echo "${WP_MD5} *wp.tar.gz" | md5sum -c - \
